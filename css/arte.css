@@ -1,0 +1,96 @@
+/*Código armado por La Foca Loca S.A. No modificar*/
+body {
+    font-family: Arial, sans-serif;
+    width: 940px;
+    margin: 1% auto;
+    min-height: 100%;
+    background-image: url(../images/arte/background.jpg);
+  } 
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  li {
+    padding: 7px 5px;
+    animation: fadein 5s;
+    font-size: 18px;
+    color: #fff;
+    background: linear-gradient(to right, rgba(46,88,116,0.25) 0%, rgba(0,39,65,0.25) 100%);
+    margin-bottom: 10px;
+    border-radius: 25px;
+  }
+  
+  li::before {
+    content: "• ";
+    color: #EC6778;
+  }
+  
+  .col-40 h1 {
+    font-size: 20px;
+    color: #E84A5F;
+    
+  }
+  
+  .col-40, .col-60, .dibujo-degradado {
+    display: table-cell;
+    margin: 0;
+    vertical-align: top;
+  }
+  .col-40 {
+    background: linear-gradient(190deg, rgba(46,88,116,1) 0%, rgba(0,39,65,1) 100%);
+    padding: 30px;
+    color: #000;
+    border-radius: 8px 0px 0px 8px;
+  }
+  
+  .col-60 {
+    background: #E84A5F;
+  
+  }
+  
+  #flecha{
+    font-size: 60px;
+  }
+  
+  .texto-centrado {
+    text-align: center;
+  }
+  
+  #juego div {
+    text-align: center;
+    animation: fadein 2s;
+  }
+  
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  
+  
+  /*  Tablero de juego */
+  
+  #juego{
+    background-color: tomato;
+    height: 600px;
+    width: 600px;
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 200px 200px 200px;
+  }
+  
+  .pieza-box{
+    border: 1px solid black;
+  }
+  
+  .pieza-box img{
+      width: 198px;
+    height: 198px;
+  }
+  
+  .final-img{
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  

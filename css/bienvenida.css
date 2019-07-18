@@ -1,0 +1,114 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: tomato;
+    font-size: 25px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    height: 100%;
+    background-color: tomato;
+}
+
+nav{
+    color: #fff;
+    background-color: black;
+    text-align: center;
+    font-size: 0.8em;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+nav h1{
+    font-family: 'Literata', serif;
+    font-weight: normal;
+}
+
+
+.stages{
+    background-color: white;
+    min-height: 365px;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    
+}
+
+.stage-img{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+
+.puzzle-img{
+    width: 300px;
+    margin: 40px;
+    border: 1px black solid;
+
+}
+
+.puzzle-img:hover{
+
+}
+
+footer{
+    background-color: black;
+    color: white;
+    font-size: 0.6em;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: lighter;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.welcome-text{
+    min-height: 195px;
+    padding-left: 20px;
+    width: 30%;
+    margin: 10px;
+}
+
+.contact{
+    width: 30%;
+    margin: 10px;
+}
+
+.contact a{
+    text-decoration: none;
+    color: tomato;
+}
+
+.button-area{
+    display:flex;
+    flex-direction: column;
+    padding-top: 1em;
+    align-items: center;
+    width:14%;
+}
+
+#direction-text{
+}
+
+#playButton{
+    padding: 10px;
+    text-align: center;
+    border: none;
+    color: lightgray;
+    background-color:#4e4369 ;
+    cursor: pointer;
+    font-family: 'Roboto Mono', monospace;
+}
+
+#playButton:active {
+    background-color: tomato;
+    transform: translateY(4px);
+    color: rgb(255, 255, 159);
+    font-family: 'Roboto Mono', monospace;
+
+  }
