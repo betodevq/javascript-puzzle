@@ -72,10 +72,18 @@ function chequearSiGano() {
 
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
+
 	if (chequearSiGano()){
+		playSound("win-sound");
 		alert('GANASTE!!!');
+
 	};
 }
+
+function playSound(sound){
+	const audio = document.querySelector(`audio[id="${sound}"]`);
+	audio.play();
+};
 
 /* Función que intercambia dos posiciones en la grilla.
 Pensar como intercambiar dos posiciones en un arreglo de arreglos. 
@@ -155,6 +163,17 @@ function moverEnDireccion(direccion) {
 	}
 }
 
+function playKeySound(e){ //Reproduce sonido cada vez que mueve una tecla
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    if (!audio) return; //Detiene la función en caso de no ser una tecla con sonido
+    audio.currentTime = 0; //Reinicia el sonido permitiendo la repeticion continua de este mismo
+	audio.play();
+}
+
+
+
+window.addEventListener('keydown', playKeySound);
 
 //////////////////////////////////////////////////////////
 ////////A CONTINUACIÓN FUNCIONES YA IMPLEMENTADAS.////////

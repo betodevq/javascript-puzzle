@@ -1,4 +1,9 @@
 /*Código armado por La Foca Loca S.A. No modificar*/
+*{
+  margin: 0;
+  padding: 0;
+}
+
 body {
     font-family: Arial, sans-serif;
     width: 940px;
@@ -46,11 +51,11 @@ body {
   
   .col-60 {
     background: #E84A5F;
-  
   }
   
   #flecha{
     font-size: 60px;
+    color: white;
   }
   
   .texto-centrado {
@@ -84,7 +89,7 @@ body {
   }
   
   .pieza-box img{
-      width: 198px;
+    width: 198px;
     height: 198px;
   }
   
