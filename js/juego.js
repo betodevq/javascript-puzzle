@@ -76,7 +76,6 @@ function mostrarCartelGanador() {
 	if (chequearSiGano()){
 		playSound("win-sound");
 		alert('GANASTE!!!');
-
 	};
 }
 
