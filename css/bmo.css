@@ -1,15 +1,22 @@
 /*Código armado por La Foca Loca S.A. No modificar*/
+*{
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: Arial, sans-serif;
-  width: 940px;
+  width: 928px;
   margin: 1% auto;
   min-height: 100%;
   background-image: url(../images/adventure.jpg);
 }
+
 ul {
   padding-left: 0;
   list-style: none;
 }
+
 li {
   padding: 7px 5px;
   animation: fadein 5s;
@@ -28,14 +35,18 @@ li::before {
 .col-40 h1 {
   font-size: 20px;
   color: #E84A5F;
-  
 }
 
-.col-40, .col-60, .dibujo-degradado {
+.container{
+  display: flex;
+}
+
+/* .col-40, .col-60, .dibujo-degradado {
   display: table-cell;
   margin: 0;
   vertical-align: top;
-}
+} */
+
 .col-40 {
   background: linear-gradient(to right, rgba(89,174,230,1) 0%, rgba(91,216,235,1) 100%);
   padding: 30px;
@@ -45,7 +56,6 @@ li::before {
 
 .col-60 {
   background: #E84A5F;
-
 }
 
 #flecha{

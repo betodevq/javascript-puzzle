@@ -170,9 +170,7 @@ function playKeySound(e){ //Reproduce sonido cada vez que mueve una tecla
 	audio.play();
 }
 
-
-
-window.addEventListener('keydown', playKeySound);
+window.addEventListener('keydown', playKeySound); //reproduce el sonido al presionar las flechas
 
 //////////////////////////////////////////////////////////
 ////////A CONTINUACIÓN FUNCIONES YA IMPLEMENTADAS.////////

@@ -6,11 +6,12 @@
 
 body {
     font-family: Arial, sans-serif;
-    width: 940px;
+    width: 928px;
     margin: 1% auto;
     min-height: 100%;
     background-image: url(../images/arte/background.jpg);
   } 
+
   ul {
     padding-left: 0;
     list-style: none;
@@ -33,15 +34,19 @@ body {
   
   .col-40 h1 {
     font-size: 20px;
-    color: #E84A5F;
-    
+    color: #E84A5F; 
   }
   
-  .col-40, .col-60, .dibujo-degradado {
+  .container{
+    display: flex;
+  }
+
+  /* .col-40, .col-60, .dibujo-degradado {
     display: table-cell;
     margin: 0;
     vertical-align: top;
-  }
+  } */
+  
   .col-40 {
     background: linear-gradient(190deg, rgba(46,88,116,1) 0%, rgba(0,39,65,1) 100%);
     padding: 30px;
