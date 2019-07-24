@@ -21,7 +21,7 @@ ul {
 li {
   padding: 7px 5px;
   animation: fadein 5s;
-  font-size: 20px;
+  font-size: 18px;
   color: #fff;
   background: linear-gradient(to right, rgba(91,216,235,0.1) 0%, rgba(89,174,230,0.25) 100%);
   margin-bottom: 10px;

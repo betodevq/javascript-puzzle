@@ -75,7 +75,12 @@ function mostrarCartelGanador() {
 
 	if (chequearSiGano()){
 		playSound("win-sound");
-		alert('GANASTE!!!');
+		swal({
+			title: "Ganaste!",
+			text: "Completaste el rompecabezas correctamente!",
+			icon: "success",
+			button: "Continuar",
+		  });
 	};
 }
 
