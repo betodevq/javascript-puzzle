@@ -11,11 +11,7 @@ var grilla = [
 	[7, 8, 9]
 ];
 
-var grillaGanadora = [
-	[1, 2, 3],
-	[4, 5, 6],
-	[7, 8, 9]
-];
+
 
 /* Estas dos variables son para guardar la posición de la pieza vacía. 
 Esta posición comienza siendo la [2, 2]*/
@@ -28,38 +24,44 @@ Para eso deberás usar la función ya implementada mostrarInstruccionEnLista().
 Podés ver su implementación en la ultima parte de este codigo. */
 function mostrarInstrucciones(instrucciones) {
 
-	for (i=0; i < instrucciones.length; i++){
-			mostrarInstruccionEnLista(instrucciones[i],'lista-instrucciones');
-			console.log(instrucciones[i]);
+	for (i = 0; i < instrucciones.length; i++) {
+		mostrarInstruccionEnLista(instrucciones[i], 'lista-instrucciones');
+		console.log(instrucciones[i]);
 	}
 }
 
 /* COMPLETAR: Crear función que agregue la última dirección al arreglo de movimientos
 y utilice actualizarUltimoMovimiento para mostrarlo en pantalla */
-function trackerMovimientos(codigoMovimiento){
-	
-	switch(codigoMovimiento){
+function trackerMovimientos(codigoMovimiento) {
+
+	switch (codigoMovimiento) {
 		case (codigosDireccion.ARRIBA):
-			movimientos.push('arriba');
-			actualizarUltimoMovimiento(codigosDireccion.ARRIBA);
-		break;
-		case (codigosDireccion.DERECHA):
-			movimientos.push('derecha');
-			actualizarUltimoMovimiento(codigosDireccion.DERECHA);
-		break;
-		case (codigosDireccion.ABAJO):
 			movimientos.push('abajo');
 			actualizarUltimoMovimiento(codigosDireccion.ABAJO);
-		break;
-		case (codigosDireccion.IZQUIERDA):
+			break;
+		case (codigosDireccion.DERECHA):
 			movimientos.push('izquierda');
-			actualizarUltimoMovimiento(codigosDireccion.IZQUIERDA);
-		break;
+			actualizarUltimoMovimiento(codigosDireccion.izquierda);
+			break;
+		case (codigosDireccion.ABAJO):
+			movimientos.push('arriba');
+			actualizarUltimoMovimiento(codigosDireccion.ARRIBA);
+			break;
+		case (codigosDireccion.IZQUIERDA):
+			movimientos.push('derecha');
+			actualizarUltimoMovimiento(codigosDireccion.DERECHA);
+			break;
 	}
 }
 /* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora. 
 Existen diferentes formas de hacer este chequeo a partir de la grilla. */
 function chequearSiGano() {
+	var grillaGanadora = [
+		[1, 2, 3],
+		[4, 5, 6],
+		[7, 8, 9]
+	];
+
 	for (var i = 0; i < grilla.length; i++) {
 		for (var j = 0; j < grilla[i].length; j++) {
 			if (grilla[i][j] != grillaGanadora[i][j]) {
@@ -70,21 +72,44 @@ function chequearSiGano() {
 	return true;
 }
 
+function pantallaFinal(){
+	swal({
+		title: 'Ganaste!',
+		icon: 'success',
+		text: 'Completaste el rompecabezas correctamente!',
+		buttons:{
+			regresar: {
+				text: 'Volver al inicio',
+				value: 'regresar',
+			},
+			reiniciar: {
+				text: 'Volver a jugar',
+				value: 'reiniciar',
+			},
+		}
+	})
+	.then((value) => {
+		switch(value){
+			case 'regresar':
+				window.location.href = 'index.html';
+			break;
+			case 'reiniciar':
+				window.location.reload();
+			break;
+		}
+	});
+}
+
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
 
-	if (chequearSiGano()){
+	if (chequearSiGano()) {
 		playSound("win-sound");
-		swal({
-			title: "Ganaste!",
-			text: "Completaste el rompecabezas correctamente!",
-			icon: "success",
-			button: "Continuar",
-		  });
+		pantallaFinal();
 	};
 }
 
-function playSound(sound){
+function playSound(sound) {
 	const audio = document.querySelector(`audio[id="${sound}"]`);
 	audio.play();
 };
@@ -114,8 +139,8 @@ function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
 
 // Para chequear si la posicón está dentro de la grilla.
 function posicionValida(fila, columna) {
-	var tamanoGrilla = grilla.length-1;
-	if (fila > tamanoGrilla || columna > tamanoGrilla || fila < 0 || columna < 0){
+	var tamanoGrilla = grilla.length - 1;
+	if (fila > tamanoGrilla || columna > tamanoGrilla || fila < 0 || columna < 0) {
 		return false;
 	}
 	return true;
@@ -127,31 +152,27 @@ function moverEnDireccion(direccion) {
 	var nuevaFilaPiezaVacia;
 	var nuevaColumnaPiezaVacia;
 
-	/* Anteriormente la lógica de esta parte fue implementada de una manera que reacciona de manera inversa el eje de movimiento
-	con respecto a las teclas (si presiona hacia abajo, el cuadrado blanco ira hacia arriba), lo he cambiado a que se comporte
-	usando el eje común para que sea un poco más cómodo de usar el juego.*/
-
 	// Mueve pieza hacia abajo, reemplazandola con la blanca
 	if (direccion === codigosDireccion.ABAJO) {
-		nuevaFilaPiezaVacia = filaVacia + 1;
+		nuevaFilaPiezaVacia = filaVacia - 1;
 		nuevaColumnaPiezaVacia = columnaVacia;
 	}
 
 	// Mueve pieza hacia arriba, reemplazandola con la blanca
 	else if (direccion === codigosDireccion.ARRIBA) {
-		nuevaFilaPiezaVacia = filaVacia - 1;
+		nuevaFilaPiezaVacia = filaVacia + 1;
 		nuevaColumnaPiezaVacia = columnaVacia;
 	}
 
 	// Mueve pieza hacia la derecha, reemplazandola con la blanca
 	else if (direccion === codigosDireccion.DERECHA) {
-		nuevaColumnaPiezaVacia = columnaVacia + 1;
+		nuevaColumnaPiezaVacia = columnaVacia - 1;
 		nuevaFilaPiezaVacia = filaVacia;
 	}
 
 	// Mueve pieza hacia la izquierda, reemplazandola con la blanca
 	else if (direccion === codigosDireccion.IZQUIERDA) {
-		nuevaColumnaPiezaVacia = columnaVacia - 1;
+		nuevaColumnaPiezaVacia = columnaVacia + 1;
 		nuevaFilaPiezaVacia = filaVacia;
 	}
 
@@ -167,11 +188,11 @@ function moverEnDireccion(direccion) {
 	}
 }
 
-function playKeySound(e){ //Reproduce sonido cada vez que mueve una tecla
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    if (!audio) return; //Detiene la función en caso de no ser una tecla con sonido
-    audio.currentTime = 0; //Reinicia el sonido permitiendo la repeticion continua de este mismo
+function playKeySound(e) { //Reproduce sonido cada vez que mueve una tecla
+	const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+	const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+	if (!audio) return; //Detiene la función en caso de no ser una tecla con sonido
+	audio.currentTime = 0; //Reinicia el sonido permitiendo la repeticion continua de este mismo
 	audio.play();
 }
 
